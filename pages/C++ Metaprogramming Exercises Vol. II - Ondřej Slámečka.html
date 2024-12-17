@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en" data-darkreader-mode="dynamic" data-darkreader-scheme="dark"><!--
+  Hello!
+  See the whole source code at https://github.com/OndrejSlamecka/slameckacz
+--><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><style class="darkreader darkreader--fallback" media="screen"></style><style class="darkreader darkreader--text" media="screen"></style><style class="darkreader darkreader--invert" media="screen">.jfk-bubble.gtx-bubble, .captcheck_answer_label > input + img, span#closed_text > img[src^="https://www.gstatic.com/images/branding/googlelogo"], span[data-href^="https://www.hcaptcha.com/"] > #icon, img.Wirisformula, a[data-testid="headerMediumLogo"]>svg {
+    filter: invert(100%) hue-rotate(180deg) contrast(90%) !important;
+}</style><style class="darkreader darkreader--inline" media="screen">[data-darkreader-inline-bgcolor] {
+  background-color: var(--darkreader-inline-bgcolor) !important;
+}
+[data-darkreader-inline-bgimage] {
+  background-image: var(--darkreader-inline-bgimage) !important;
+}
+[data-darkreader-inline-border] {
+  border-color: var(--darkreader-inline-border) !important;
+}
+[data-darkreader-inline-border-bottom] {
+  border-bottom-color: var(--darkreader-inline-border-bottom) !important;
+}
+[data-darkreader-inline-border-left] {
+  border-left-color: var(--darkreader-inline-border-left) !important;
+}
+[data-darkreader-inline-border-right] {
+  border-right-color: var(--darkreader-inline-border-right) !important;
+}
+[data-darkreader-inline-border-top] {
+  border-top-color: var(--darkreader-inline-border-top) !important;
+}
+[data-darkreader-inline-boxshadow] {
+  box-shadow: var(--darkreader-inline-boxshadow) !important;
+}
+[data-darkreader-inline-color] {
+  color: var(--darkreader-inline-color) !important;
+}
+[data-darkreader-inline-fill] {
+  fill: var(--darkreader-inline-fill) !important;
+}
+[data-darkreader-inline-stroke] {
+  stroke: var(--darkreader-inline-stroke) !important;
+}
+[data-darkreader-inline-outline] {
+  outline-color: var(--darkreader-inline-outline) !important;
+}
+[data-darkreader-inline-stopcolor] {
+  stop-color: var(--darkreader-inline-stopcolor) !important;
+}
+[data-darkreader-inline-bg] {
+  background: var(--darkreader-inline-bg) !important;
+}
+[data-darkreader-inline-invert] {
+    filter: invert(100%) hue-rotate(180deg);
+}</style><style class="darkreader darkreader--variables" media="screen">:root {
+   --darkreader-neutral-background: var(--darkreader-background-ffffff, #181a1b);
+   --darkreader-neutral-text: var(--darkreader-text-000000, #e8e6e3);
+   --darkreader-selection-background: var(--darkreader-background-0060d4, #004daa);
+   --darkreader-selection-text: var(--darkreader-text-ffffff, #e8e6e3);
+}</style><style class="darkreader darkreader--root-vars" media="screen"></style><style class="darkreader darkreader--user-agent" media="screen">@layer {
+html {
+    background-color: var(--darkreader-background-ffffff, #181a1b) !important;
+}
+html {
+    color-scheme: dark !important;
+}
+iframe {
+    color-scheme: dark !important;
+}
+html, body {
+    background-color: var(--darkreader-background-ffffff, #181a1b);
+}
+html, body {
+    border-color: #736b5e;
+    color: var(--darkreader-text-000000, #e8e6e3);
+}
+a {
+    color: #3391ff;
+}
+table {
+    border-color: #545b5e;
+}
+mark {
+    color: var(--darkreader-text-000000, #e8e6e3);
+}
+::placeholder {
+    color: #b2aba1;
+}
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    background-color: #404400 !important;
+    color: var(--darkreader-text-000000, #e8e6e3) !important;
+}
+::selection {
+    background-color: #004daa !important;
+    color: #e8e6e3 !important;
+}
+::-moz-selection {
+    background-color: #004daa !important;
+    color: #e8e6e3 !important;
+}
+}</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C++ Metaprogramming Exercises Vol. II - Ondřej Slámečka</title>
+  <link rel="stylesheet" href="C++%20Metaprogramming%20Exercises%20Vol.%20II%20-%20Ond%C5%99ej%20Sl%C3%A1me%C4%8Dka_files/style.css"><style class="darkreader darkreader--sync" media="screen"></style>
+<meta name="darkreader" content="31bbeb650ffb47d1af78a93af37ee0d8"><style class="darkreader darkreader--override" media="screen">.vimvixen-hint {
+    background-color: #684b00 !important;
+    border-color: #9e7e00 !important;
+    color: #d7d4cf !important;
+}
+#vimvixen-console-frame {
+    color-scheme: light !important;
+}
+::placeholder {
+    opacity: 0.5 !important;
+}
+#edge-translate-panel-body,
+.MuiTypography-body1,
+.nfe-quote-text {
+    color: var(--darkreader-neutral-text) !important;
+}
+gr-main-header {
+    background-color: #1b4958 !important;
+}
+.tou-z65h9k,
+.tou-mignzq,
+.tou-1b6i2ox,
+.tou-lnqlqk {
+    background-color: var(--darkreader-neutral-background) !important;
+}
+.tou-75mvi {
+    background-color: #0f3a47 !important;
+}
+.tou-ta9e87,
+.tou-1w3fhi0,
+.tou-1b8t2us,
+.tou-py7lfi,
+.tou-1lpmd9d,
+.tou-1frrtv8,
+.tou-17ezmgn {
+    background-color: #1e2021 !important;
+}
+.tou-uknfeu {
+    background-color: #432c09 !important;
+}
+.tou-6i3zyv {
+    background-color: #245d70 !important;
+}
+div.mermaid-viewer-control-panel .btn {
+    background-color: var(--darkreader-neutral-background);
+    fill: var(--darkreader-neutral-text);
+}
+svg g rect.er {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.er.entityBox {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.er.attributeBoxOdd {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.er.attributeBoxEven {
+    fill: var(--darkreader-selection-background);
+    fill-opacity: 0.8 !important;
+}
+svg rect.er.relationshipLabelBox {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g g.nodes rect,
+svg g g.nodes polygon {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.task {
+    fill: var(--darkreader-selection-background) !important;
+}
+svg line.messageLine0,
+svg line.messageLine1 {
+    stroke: var(--darkreader-neutral-text) !important;
+}
+div.mermaid .actor {
+    fill: var(--darkreader-neutral-background) !important;
+}
+mitid-authenticators-code-app > .code-app-container {
+    background-color: white !important;
+    padding-top: 1rem;
+}
+iframe#unpaywall[src$="unpaywall.html"] {
+    color-scheme: light !important;
+}
+select option {
+    background-color: var(--darkreader-neutral-background) !important;
+}
+embed[type="application/pdf"] { filter: invert(100%) contrast(90%); }</style><style type="text/css">.CtxtMenu_InfoClose {  top:.2em; right:.2em;}
+.CtxtMenu_InfoContent {  overflow:auto; text-align:left; font-size:80%;  padding:.4em .6em; border:1px inset; margin:1em 0px;  max-height:20em; max-width:30em; background-color:#EEEEEE;  white-space:normal;}
+.CtxtMenu_Info.CtxtMenu_MousePost {outline:none;}
+.CtxtMenu_Info {  position:fixed; left:50%; width:auto; text-align:center;  border:3px outset; padding:1em 2em; background-color:#DDDDDD;  color:black;  cursor:default; font-family:message-box; font-size:120%;  font-style:normal; text-indent:0; text-transform:none;  line-height:normal; letter-spacing:normal; word-spacing:normal;  word-wrap:normal; white-space:nowrap; float:none; z-index:201;  border-radius: 15px;                     /* Opera 10.5 and IE9 */  -webkit-border-radius:15px;               /* Safari and Chrome */  -moz-border-radius:15px;                  /* Firefox */  -khtml-border-radius:15px;                /* Konqueror */  box-shadow:0px 10px 20px #808080;         /* Opera 10.5 and IE9 */  -webkit-box-shadow:0px 10px 20px #808080; /* Safari 3 & Chrome */  -moz-box-shadow:0px 10px 20px #808080;    /* Forefox 3.5 */  -khtml-box-shadow:0px 10px 20px #808080;  /* Konqueror */  filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color="gray", Positive="true"); /* IE */}
+</style><style class="darkreader darkreader--sync" media="screen"></style><style type="text/css">.CtxtMenu_MenuClose {  position:absolute;  cursor:pointer;  display:inline-block;  border:2px solid #AAA;  border-radius:18px;  -webkit-border-radius: 18px;             /* Safari and Chrome */  -moz-border-radius: 18px;                /* Firefox */  -khtml-border-radius: 18px;              /* Konqueror */  font-family: "Courier New", Courier;  font-size:24px;  color:#F0F0F0}
+.CtxtMenu_MenuClose span {  display:block; background-color:#AAA; border:1.5px solid;  border-radius:18px;  -webkit-border-radius: 18px;             /* Safari and Chrome */  -moz-border-radius: 18px;                /* Firefox */  -khtml-border-radius: 18px;              /* Konqueror */  line-height:0;  padding:8px 0 6px     /* may need to be browser-specific */}
+.CtxtMenu_MenuClose:hover {  color:white!important;  border:2px solid #CCC!important}
+.CtxtMenu_MenuClose:hover span {  background-color:#CCC!important}
+.CtxtMenu_MenuClose:hover:focus {  outline:none}
+</style><style class="darkreader darkreader--sync" media="screen"></style><style type="text/css">.CtxtMenu_Menu {  position:absolute;  background-color:white;  color:black;  width:auto; padding:5px 0px;  border:1px solid #CCCCCC; margin:0; cursor:default;  font: menu; text-align:left; text-indent:0; text-transform:none;  line-height:normal; letter-spacing:normal; word-spacing:normal;  word-wrap:normal; white-space:nowrap; float:none; z-index:201;  border-radius: 5px;                     /* Opera 10.5 and IE9 */  -webkit-border-radius: 5px;             /* Safari and Chrome */  -moz-border-radius: 5px;                /* Firefox */  -khtml-border-radius: 5px;              /* Konqueror */  box-shadow:0px 10px 20px #808080;         /* Opera 10.5 and IE9 */  -webkit-box-shadow:0px 10px 20px #808080; /* Safari 3 & Chrome */  -moz-box-shadow:0px 10px 20px #808080;    /* Forefox 3.5 */  -khtml-box-shadow:0px 10px 20px #808080;  /* Konqueror */}
+.CtxtMenu_MenuItem {  padding: 1px 2em;  background:transparent;}
+.CtxtMenu_MenuArrow {  position:absolute; right:.5em; padding-top:.25em; color:#666666;  font-family: null; font-size: .75em}
+.CtxtMenu_MenuActive .CtxtMenu_MenuArrow {color:white}
+.CtxtMenu_MenuArrow.CtxtMenu_RTL {left:.5em; right:auto}
+.CtxtMenu_MenuCheck {  position:absolute; left:.7em;  font-family: null}
+.CtxtMenu_MenuCheck.CtxtMenu_RTL { right:.7em; left:auto }
+.CtxtMenu_MenuRadioCheck {  position:absolute; left: .7em;}
+.CtxtMenu_MenuRadioCheck.CtxtMenu_RTL {  right: .7em; left:auto}
+.CtxtMenu_MenuInputBox {  padding-left: 1em; right:.5em; color:#666666;  font-family: null;}
+.CtxtMenu_MenuInputBox.CtxtMenu_RTL {  left: .1em;}
+.CtxtMenu_MenuComboBox {  left:.1em; padding-bottom:.5em;}
+.CtxtMenu_MenuSlider {  left: .1em;}
+.CtxtMenu_SliderValue {  position:absolute; right:.1em; padding-top:.25em; color:#333333;  font-size: .75em}
+.CtxtMenu_SliderBar {  outline: none; background: #d3d3d3}
+.CtxtMenu_MenuLabel {  padding: 1px 2em 3px 1.33em;  font-style:italic}
+.CtxtMenu_MenuRule {  border-top: 1px solid #DDDDDD;  margin: 4px 3px;}
+.CtxtMenu_MenuDisabled {  color:GrayText}
+.CtxtMenu_MenuActive {  background-color: #606872;  color: white;}
+.CtxtMenu_MenuDisabled:focus {  background-color: #E8E8E8}
+.CtxtMenu_MenuLabel:focus {  background-color: #E8E8E8}
+.CtxtMenu_ContextMenu:focus {  outline:none}
+.CtxtMenu_ContextMenu .CtxtMenu_MenuItem:focus {  outline:none}
+.CtxtMenu_SelectionMenu {  position:relative; float:left;  border-bottom: none; -webkit-box-shadow:none; -webkit-border-radius:0px; }
+.CtxtMenu_SelectionItem {  padding-right: 1em;}
+.CtxtMenu_Selection {  right: 40%; width:50%; }
+.CtxtMenu_SelectionBox {  padding: 0em; max-height:20em; max-width: none;  background-color:#FFFFFF;}
+.CtxtMenu_SelectionDivider {  clear: both; border-top: 2px solid #000000;}
+.CtxtMenu_Menu .CtxtMenu_MenuClose {  top:-10px; left:-10px}
+</style><style class="darkreader darkreader--sync" media="screen"></style><style id="MJX-CHTML-styles">
+mjx-container[jax="CHTML"] {
+  line-height: 0;
+}
+
+mjx-container [space="1"] {
+  margin-left: .111em;
+}
+
+mjx-container [space="2"] {
+  margin-left: .167em;
+}
+
+mjx-container [space="3"] {
+  margin-left: .222em;
+}
+
+mjx-container [space="4"] {
+  margin-left: .278em;
+}
+
+mjx-container [space="5"] {
+  margin-left: .333em;
+}
+
+mjx-container [rspace="1"] {
+  margin-right: .111em;
+}
+
+mjx-container [rspace="2"] {
+  margin-right: .167em;
+}
+
+mjx-container [rspace="3"] {
+  margin-right: .222em;
+}
+
+mjx-container [rspace="4"] {
+  margin-right: .278em;
+}
+
+mjx-container [rspace="5"] {
+  margin-right: .333em;
+}
+
+mjx-container [size="s"] {
+  font-size: 70.7%;
+}
+
+mjx-container [size="ss"] {
+  font-size: 50%;
+}
+
+mjx-container [size="Tn"] {
+  font-size: 60%;
+}
+
+mjx-container [size="sm"] {
+  font-size: 85%;
+}
+
+mjx-container [size="lg"] {
+  font-size: 120%;
+}
+
+mjx-container [size="Lg"] {
+  font-size: 144%;
+}
+
+mjx-container [size="LG"] {
+  font-size: 173%;
+}
+
+mjx-container [size="hg"] {
+  font-size: 207%;
+}
+
+mjx-container [size="HG"] {
+  font-size: 249%;
+}
+
+mjx-container [width="full"] {
+  width: 100%;
+}
+
+mjx-box {
+  display: inline-block;
+}
+
+mjx-block {
+  display: block;
+}
+
+mjx-itable {
+  display: inline-table;
+}
+
+mjx-row {
+  display: table-row;
+}
+
+mjx-row > * {
+  display: table-cell;
+}
+
+mjx-mtext {
+  display: inline-block;
+}
+
+mjx-mstyle {
+  display: inline-block;
+}
+
+mjx-merror {
+  display: inline-block;
+  color: red;
+  background-color: yellow;
+}
+
+mjx-mphantom {
+  visibility: hidden;
+}
+
+_::-webkit-full-page-media, _:future, :root mjx-container {
+  will-change: opacity;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-c::before {
+  display: block;
+  width: 0;
+}
+
+.MJX-TEX {
+  font-family: MJXZERO, MJXTEX;
+}
+
+.TEX-B {
+  font-family: MJXZERO, MJXTEX-B;
+}
+
+.TEX-I {
+  font-family: MJXZERO, MJXTEX-I;
+}
+
+.TEX-MI {
+  font-family: MJXZERO, MJXTEX-MI;
+}
+
+.TEX-BI {
+  font-family: MJXZERO, MJXTEX-BI;
+}
+
+.TEX-S1 {
+  font-family: MJXZERO, MJXTEX-S1;
+}
+
+.TEX-S2 {
+  font-family: MJXZERO, MJXTEX-S2;
+}
+
+.TEX-S3 {
+  font-family: MJXZERO, MJXTEX-S3;
+}
+
+.TEX-S4 {
+  font-family: MJXZERO, MJXTEX-S4;
+}
+
+.TEX-A {
+  font-family: MJXZERO, MJXTEX-A;
+}
+
+.TEX-C {
+  font-family: MJXZERO, MJXTEX-C;
+}
+
+.TEX-CB {
+  font-family: MJXZERO, MJXTEX-CB;
+}
+
+.TEX-FR {
+  font-family: MJXZERO, MJXTEX-FR;
+}
+
+.TEX-FRB {
+  font-family: MJXZERO, MJXTEX-FRB;
+}
+
+.TEX-SS {
+  font-family: MJXZERO, MJXTEX-SS;
+}
+
+.TEX-SSB {
+  font-family: MJXZERO, MJXTEX-SSB;
+}
+
+.TEX-SSI {
+  font-family: MJXZERO, MJXTEX-SSI;
+}
+
+.TEX-SC {
+  font-family: MJXZERO, MJXTEX-SC;
+}
+
+.TEX-T {
+  font-family: MJXZERO, MJXTEX-T;
+}
+
+.TEX-V {
+  font-family: MJXZERO, MJXTEX-V;
+}
+
+.TEX-VB {
+  font-family: MJXZERO, MJXTEX-VB;
+}
+
+mjx-stretchy-v mjx-c, mjx-stretchy-h mjx-c {
+  font-family: MJXZERO, MJXTEX-S1, MJXTEX-S4, MJXTEX, MJXTEX-A ! important;
+}
+
+@font-face /* 0 */ {
+  font-family: MJXZERO;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Zero.woff") format("woff");
+}
+
+@font-face /* 1 */ {
+  font-family: MJXTEX;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Main-Regular.woff") format("woff");
+}
+
+@font-face /* 2 */ {
+  font-family: MJXTEX-B;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Main-Bold.woff") format("woff");
+}
+
+@font-face /* 3 */ {
+  font-family: MJXTEX-I;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Math-Italic.woff") format("woff");
+}
+
+@font-face /* 4 */ {
+  font-family: MJXTEX-MI;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Main-Italic.woff") format("woff");
+}
+
+@font-face /* 5 */ {
+  font-family: MJXTEX-BI;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Math-BoldItalic.woff") format("woff");
+}
+
+@font-face /* 6 */ {
+  font-family: MJXTEX-S1;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size1-Regular.woff") format("woff");
+}
+
+@font-face /* 7 */ {
+  font-family: MJXTEX-S2;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size2-Regular.woff") format("woff");
+}
+
+@font-face /* 8 */ {
+  font-family: MJXTEX-S3;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size3-Regular.woff") format("woff");
+}
+
+@font-face /* 9 */ {
+  font-family: MJXTEX-S4;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size4-Regular.woff") format("woff");
+}
+
+@font-face /* 10 */ {
+  font-family: MJXTEX-A;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_AMS-Regular.woff") format("woff");
+}
+
+@font-face /* 11 */ {
+  font-family: MJXTEX-C;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Calligraphic-Regular.woff") format("woff");
+}
+
+@font-face /* 12 */ {
+  font-family: MJXTEX-CB;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Calligraphic-Bold.woff") format("woff");
+}
+
+@font-face /* 13 */ {
+  font-family: MJXTEX-FR;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Fraktur-Regular.woff") format("woff");
+}
+
+@font-face /* 14 */ {
+  font-family: MJXTEX-FRB;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Fraktur-Bold.woff") format("woff");
+}
+
+@font-face /* 15 */ {
+  font-family: MJXTEX-SS;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_SansSerif-Regular.woff") format("woff");
+}
+
+@font-face /* 16 */ {
+  font-family: MJXTEX-SSB;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_SansSerif-Bold.woff") format("woff");
+}
+
+@font-face /* 17 */ {
+  font-family: MJXTEX-SSI;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_SansSerif-Italic.woff") format("woff");
+}
+
+@font-face /* 18 */ {
+  font-family: MJXTEX-SC;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Script-Regular.woff") format("woff");
+}
+
+@font-face /* 19 */ {
+  font-family: MJXTEX-T;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Typewriter-Regular.woff") format("woff");
+}
+
+@font-face /* 20 */ {
+  font-family: MJXTEX-V;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Vector-Regular.woff") format("woff");
+}
+
+@font-face /* 21 */ {
+  font-family: MJXTEX-VB;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Vector-Bold.woff") format("woff");
+}
+</style><style class="darkreader darkreader--sync" media="screen"></style></head>
+<body>
+  <header>
+    <div class="logo">
+        <a href="https://www.slamecka.cz/">Ondřej Slámečka</a>
+    </div>
+    <nav>
+        <a href="https://www.slamecka.cz/">About / Contact / Archive</a>
+    </nav>
+  </header>
+
+  <main role="main">
+    <h1>C++ Metaprogramming Exercises Vol. II</h1>
+    <article>
+  <section class="author">
+    December 2021
+  </section>
+  <section>
+    <p>This post is a part of a series:</p>
+<ul>
+<li><a href="https://www.slamecka.cz/posts/2021-03-17-cpp-metaprogramming-exercises-1">C++ Metaprogramming Exercises Vol. I: Basics</a></li>
+<li>C++ Metaprogramming Exercises Vol. II: Algorithms (this page)</li>
+</ul>
+<p>Below is a set of exercises for type level programming in C++ with a 
+focus on algorithms which makes them more suitable for programmers who 
+are already comfortable with the basics from the previous set.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c++"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="co">// https://www.slamecka.cz/posts/2021-12-05-cpp-metaprogramming-exercises-2/</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="co">//</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="co">// A set of exercises for type level programming in C++ suitable for programmers with</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="co">// intermediate knowledge of template programming and algorithm problems.</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a><span class="co">//</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a><span class="co">// Scope:</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a><span class="co">// - Standard template metaprogramming techniques of moderate difficulty.</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a><span class="co">// - Focused on algorithm problems.</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a><span class="co">//</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a><span class="co">// How to solve it:</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a><span class="co">// - Make sure you understand topics from Set 1.</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true"></a><span class="co">// - You should be able to compile with gcc version 11.2, g++ --std=c++20 typelevel_set2.cpp</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true"></a><span class="co">// - Tests are commented-out and you should uncomment them as you go.</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true"></a><span class="co">// - You might want to solve the problems on value level first.</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;algorithm&gt;</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;type_traits&gt;</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true"></a><span class="kw">namespace</span> {</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true"></a><span class="co">/**</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true"></a><span class="co"> * 1. Define Fibonacci to contain the n-th number in the series 0,1,1,2,3,5,8,13,...</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true"></a><span class="co"> *</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true"></a><span class="co"> * Try three implementations:</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true"></a><span class="co"> * - Using templated structs (hint: use the SFINAE Enable trick).</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true"></a><span class="co"> * - Recursive constexpr function.</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true"></a><span class="co"> * - Iterative constexpr function.</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true"></a><span class="co"> *</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true"></a><span class="co"> * Measure the compilation time of each implementation. Observe how the templated-structs implementation</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true"></a><span class="co"> * is a direct implementation of the recursive definition of Fibonacci sequence, yet it's as fast as the</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true"></a><span class="co"> * iterative implementation thanks to memoization built into the template system.</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true"></a><span class="co"> */</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true"></a><span class="co">// Your code goes here:</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true"></a><span class="co">// ^ Your code goes here</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true"></a><span class="co">// static_assert(Fibonacci&lt;0&gt;::value == 0);</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true"></a><span class="co">// static_assert(Fibonacci&lt;1&gt;::value == 1);</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true"></a><span class="co">// static_assert(Fibonacci&lt;2&gt;::value == 1);</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true"></a><span class="co">// static_assert(Fibonacci&lt;3&gt;::value == 2);</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true"></a><span class="co">// static_assert(Fibonacci&lt;4&gt;::value == 3);</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true"></a><span class="co">// static_assert(Fibonacci&lt;5&gt;::value == 5);</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true"></a><span class="co">// static_assert(Fibonacci&lt;6&gt;::value == 8);</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true"></a><span class="co">// static_assert(Fibonacci&lt;7&gt;::value == 13);</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true"></a><span class="co">// static_assert(Fibonacci&lt;41&gt;::value % 2 == 1); // Useful for benchmarking, make sure your compiler calculates LHS.</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true"></a></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true"></a></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true"></a><span class="co">/**</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true"></a><span class="co"> * 2. Define Concat that takes two vectors and concatenates them into one.</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true"></a><span class="co"> *</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true"></a><span class="co"> * This is a warmup before the next exercise.</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true"></a><span class="co"> */</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true"></a></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true"></a><span class="kw">template</span>&lt;<span class="dt">int</span>...&gt;</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true"></a><span class="kw">struct</span> Vector</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true"></a>{};</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true"></a></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true"></a><span class="co">// Your code goes here:</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true"></a><span class="co">// ^ Your code goes here</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true"></a></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true"></a><span class="co">// static_assert(std::is_same_v&lt;Concat&lt;Vector&lt;1,2&gt;, Vector&lt;3,4&gt;&gt;::type, Vector&lt;1,2,3,4&gt;&gt;);</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true"></a></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true"></a></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true"></a><span class="co">/**</span></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true"></a><span class="co"> * 3. Run Length Encoding</span></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true"></a><span class="co"> */</span></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true"></a></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true"></a><span class="co">// Your code goes here:</span></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true"></a><span class="co">// ^ Your code goes here</span></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true"></a></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true"></a><span class="co">// static_assert(std::is_same_v&lt;RLE&lt;0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1&gt;::type, Vector&lt;5,0,2,1,12,0,1,1&gt;&gt;);</span></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true"></a><span class="co">// static_assert(std::is_same_v&lt;RLE&lt;1,1,1,1,9,9,9,2&gt;::type, Vector&lt;4,1,3,9,1,2&gt;&gt;);</span></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true"></a></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true"></a></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true"></a><span class="co">/**</span></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true"></a><span class="co"> * 4. Minimum Subset Sum Difference</span></span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true"></a><span class="co"> *    Given a set of numbers, consider partitioning them into two sets, summing each to receive two numbers.</span></span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true"></a><span class="co"> *    Find the absolute difference between these two numbers that is the smallest (over all possible partitions).</span></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true"></a><span class="co"> */</span></span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true"></a></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true"></a><span class="co">// Your code goes here:</span></span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true"></a><span class="co">// ^ Your code goes here</span></span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true"></a></span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true"></a><span class="co">// static_assert(MSSD&lt;&gt;::value == 0);</span></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true"></a><span class="co">// static_assert(MSSD&lt;1&gt;::value == 1);</span></span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true"></a><span class="co">// static_assert(MSSD&lt;1, 1&gt;::value == 0);</span></span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true"></a><span class="co">// static_assert(MSSD&lt;1, 1, 1&gt;::value == 1);</span></span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true"></a><span class="co">// static_assert(MSSD&lt;20, 30, 10, 10, 20&gt;::value == 10);</span></span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true"></a><span class="co">// static_assert(MSSD&lt;5, 20, 25, 10, 10, 20&gt;::value == 0);</span></span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true"></a><span class="co">// static_assert(MSSD&lt;5, 10, 15, 20, 25, 10, 10, 20&gt;::value == 5);</span></span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true"></a></span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true"></a></span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true"></a><span class="co">/**</span></span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true"></a><span class="co"> * 5. Define type Middle to contain the middle letter of a string with an odd length.</span></span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true"></a><span class="co"> *</span></span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true"></a><span class="co"> * We'll need a type level string container (requires C++20).</span></span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true"></a><span class="co"> * This is a warmup before the next exercise.</span></span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true"></a><span class="co"> */</span></span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true"></a><span class="kw">template</span>&lt;<span class="dt">size_t</span> N&gt;</span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true"></a><span class="kw">struct</span> MetaString {</span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true"></a>    <span class="kw">constexpr</span> MetaString(<span class="at">const</span> <span class="dt">char</span> (&amp;s)[N])</span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true"></a>    {</span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true"></a>        <span class="bu">std::</span>copy_n(s, N, value);</span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true"></a>    }</span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true"></a></span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true"></a>    <span class="dt">char</span> value[N];</span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true"></a>    <span class="bu">std::</span>size_t size = N;</span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true"></a>};</span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true"></a></span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true"></a><span class="kw">template</span>&lt;MetaString S&gt;</span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true"></a><span class="kw">struct</span> Middle</span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true"></a>{</span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true"></a><span class="co">// Your code goes here:</span></span>
+<span id="cb1-115"><a href="#cb1-115" aria-hidden="true"></a><span class="co">// ^ Your code goes here</span></span>
+<span id="cb1-116"><a href="#cb1-116" aria-hidden="true"></a>};</span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true"></a></span>
+<span id="cb1-118"><a href="#cb1-118" aria-hidden="true"></a><span class="co">// static_assert(Middle&lt;"abc"&gt;::value == 'b');</span></span>
+<span id="cb1-119"><a href="#cb1-119" aria-hidden="true"></a><span class="co">// static_assert(Middle&lt;"abcde"&gt;::value == 'c');</span></span>
+<span id="cb1-120"><a href="#cb1-120" aria-hidden="true"></a></span>
+<span id="cb1-121"><a href="#cb1-121" aria-hidden="true"></a><span class="co">/**</span></span>
+<span id="cb1-122"><a href="#cb1-122" aria-hidden="true"></a><span class="co"> * 6. Define DeletesToEqual which calculates the minimum number of letters to delete from two strings to make</span></span>
+<span id="cb1-123"><a href="#cb1-123" aria-hidden="true"></a><span class="co"> * them equal.</span></span>
+<span id="cb1-124"><a href="#cb1-124" aria-hidden="true"></a><span class="co"> *</span></span>
+<span id="cb1-125"><a href="#cb1-125" aria-hidden="true"></a><span class="co"> * (This is a simplification of the well-known edit distance problem.)</span></span>
+<span id="cb1-126"><a href="#cb1-126" aria-hidden="true"></a><span class="co"> */</span></span>
+<span id="cb1-127"><a href="#cb1-127" aria-hidden="true"></a></span>
+<span id="cb1-128"><a href="#cb1-128" aria-hidden="true"></a><span class="co">// Your code goes here:</span></span>
+<span id="cb1-129"><a href="#cb1-129" aria-hidden="true"></a><span class="co">// ^ Your code goes here</span></span>
+<span id="cb1-130"><a href="#cb1-130" aria-hidden="true"></a></span>
+<span id="cb1-131"><a href="#cb1-131" aria-hidden="true"></a><span class="co">// static_assert(DeletesToEqual&lt;"a", "b"&gt;::value == 2);</span></span>
+<span id="cb1-132"><a href="#cb1-132" aria-hidden="true"></a><span class="co">// static_assert(DeletesToEqual&lt;"abc", "bcd"&gt;::value == 2);</span></span>
+<span id="cb1-133"><a href="#cb1-133" aria-hidden="true"></a><span class="co">// static_assert(DeletesToEqual&lt;"abcd", "bcd"&gt;::value == 1);</span></span>
+<span id="cb1-134"><a href="#cb1-134" aria-hidden="true"></a><span class="co">// static_assert(DeletesToEqual&lt;"abc", "xbz"&gt;::value == 4);</span></span>
+<span id="cb1-135"><a href="#cb1-135" aria-hidden="true"></a><span class="co">// static_assert(DeletesToEqual&lt;"ababa", "bb"&gt;::value == 3);</span></span>
+<span id="cb1-136"><a href="#cb1-136" aria-hidden="true"></a><span class="co">// static_assert(DeletesToEqual&lt;"chocolatefactory", "charlie"&gt;::value == 15);</span></span>
+<span id="cb1-137"><a href="#cb1-137" aria-hidden="true"></a></span>
+<span id="cb1-138"><a href="#cb1-138" aria-hidden="true"></a>}</span>
+<span id="cb1-139"><a href="#cb1-139" aria-hidden="true"></a></span>
+<span id="cb1-140"><a href="#cb1-140" aria-hidden="true"></a><span class="dt">int</span> main()</span>
+<span id="cb1-141"><a href="#cb1-141" aria-hidden="true"></a>{</span>
+<span id="cb1-142"><a href="#cb1-142" aria-hidden="true"></a>}</span></code></pre></div>
+<p>You can have a look at <a href="https://www.slamecka.cz/assets/2021-12-05-cpp-metaprogramming-exercises-2/typelevel_set2.cpp">my solution</a>, which is provided with no guarantees.</p>
+<p>In order to generate the exercise file from the solved file I used the script below.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="fu">cat</span> typelevel_set2.cpp <span class="kw">|</span> <span class="fu">awk</span> -v incode=1 <span class="st">'{ if ($0 ~ "// \\\^?.?Your"){ incode = !incode; if (!incode) { print $0 } }; if (incode) { print $0 } }'</span> <span class="kw">|</span> <span class="fu">awk</span> -v inmain=0 <span class="st">'{ if (inmain == 1 &amp;&amp; $0 != "{" &amp;&amp; $0 != "}") { printf "// %s\n",$0; } else { print $0 }; if ($0 == "int main()") { inmain = 1 }; }'</span> <span class="kw">|</span> <span class="fu">awk</span> <span class="st">'{ if ($0 ~ "^static_assert") { printf "// %s\n",$0; } else { print $0; } }'</span></span></code></pre></div>
+  </section>
+</article>
+
+  </main>
+
+  <footer>
+    <p>
+      <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" style="display: inline-block;">
+        <img alt="Creative Commons Licence" style="display: inline-block; vertical-align: -4px;" src="C++%20Metaprogramming%20Exercises%20Vol.%20II%20-%20Ond%C5%99ej%20Sl%C3%A1me%C4%8Dka_files/80x15.png">
+      </a>
+      <a href="https://github.com/OndrejSlamecka/slameckacz">
+        source
+      </a>
+    </p>
+  </footer>
+
+  <script>
+    MathJax = {
+      tex: {
+        // Hakyll escape for dollar is double dollar
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    };
+  </script>
+  <script id="MathJax-script" async="" src="C++%20Metaprogramming%20Exercises%20Vol.%20II%20-%20Ond%C5%99ej%20Sl%C3%A1me%C4%8Dka_files/tex-mml-chtml.js"></script>
+
+
+</body></html>
