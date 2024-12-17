@@ -1,12 +1,18 @@
+#include <type_traits>
+
 /**
  * 1. Define Vector, a template level list of integers.
  * Hint: Use non-type template parameter pack.
  */
 
-// Your code goes here:
-// ^ Your code goes here
+template<int... data>
+class Vector
+{
+};
 
-// static_assert(std::is_same_v<Vector<1,2>, Vector<1,2>>);
+static_assert(std::is_same_v<Vector<1, 2>, Vector<1, 2>>);
+static_assert(!std::is_same_v<Vector<>, Vector<1, 2>>);
+static_assert(!std::is_same_v<Vector<1, 3>, Vector<1, 2>>);
 
 /**
  * 2. Define function print() that prints Vector-s.
