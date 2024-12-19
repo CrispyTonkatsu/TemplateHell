@@ -53,7 +53,6 @@ auto print(Vector<>) -> void
  * template parameters.
  */
 
-// TODO: Left off here
 template<int P, typename V>
 struct Prepend
 {
@@ -74,51 +73,127 @@ static_assert(std::is_same_v<Prepend<1, Vector<2, 3>>::type, Vector<1, 2, 3>>);
  * This technique is not used further to reduce boilerplate.
  */
 
-template<int P, int... I>
-using PrependT = Prepend<>;
+template<int P, typename V>
+using PrependT = Prepend<P, V>::type;
 
-  static_assert(std::is_same_v<PrependT<1, Vector<2, 3>>, Vector<1, 2, 3>>);
+static_assert(std::is_same_v<PrependT<1, Vector<2, 3>>, Vector<1, 2, 3>>);
 
 /**
  * 5. Define Append.
  */
 
-// Your code goes here:
-// ^ Your code goes here
+template<int P, typename V>
+struct Append
+{
+};
 
-// static_assert(std::is_same_v< Append<4, Vector<1,2,3>>::type ,
-// Vector<1,2,3,4> >);
+template<int P, int... I>
+struct Append<P, Vector<I...>>
+{
+  using type = Vector<I..., P>;
+};
+
+static_assert(std::is_same_v<Prepend<1, Vector<2, 3>>::type, Vector<1, 2, 3>>);
+
+static_assert(std::is_same_v<
+              Append<4, Vector<1, 2, 3>>::type,
+              Vector<1, 2, 3, 4>>);
 
 /**
  * 6. Define PopBack.
  */
 
-// Your code goes here:
-// ^ Your code goes here
+template<typename V>
+struct PopBack
+{
+};
 
-// static_assert(std::is_same_v< PopBack<Vector<1,2,3,4>>::type , Vector<1,2,3>
-// >);
+template<int First, int Second, int... Rest>
+struct PopBack<Vector<First, Second, Rest...>>
+{
+  using type =
+    Prepend<First, typename PopBack<Vector<Second, Rest...>>::type>::type;
+};
+
+template<int Last, int... Rest>
+struct PopBack<Vector<Last, Rest...>>
+{
+  using type = Vector<Rest...>;
+};
+
+static_assert(std::
+                is_same_v<PopBack<Vector<1, 2, 3, 4>>::type, Vector<1, 2, 3>>);
 
 /**
  * 7. Define RemoveFirst, that removes the first occurence of element R from
  * vector V.
  */
 
-// Your code goes here:
-// ^ Your code goes here
+template<int I, typename V>
+struct RemoveFirst
+{
+};
 
-// static_assert(std::is_same_v<RemoveFirst<1, Vector<1,1,2>>::type,
-// Vector<1,2>>);
+template<int ToRemove, int... Rest>
+struct RemoveFirst<ToRemove, Vector<ToRemove, Rest...>>
+{
+  using type = Vector<Rest...>;
+};
+
+template<int ToRemove, int First, int... Rest>
+struct RemoveFirst<ToRemove, Vector<First, Rest...>>
+{
+  using type =
+    Prepend<First, typename RemoveFirst<ToRemove, Vector<Rest...>>::type>::type;
+};
+
+template<int ToRemove, int... Rest>
+struct RemoveFirst<ToRemove, Vector<Rest...>>
+{
+  using type = Vector<Rest...>;
+};
+
+static_assert(std::
+                is_same_v<RemoveFirst<1, Vector<1, 1, 2>>::type, Vector<1, 2>>);
+static_assert(std::
+                is_same_v<RemoveFirst<3, Vector<1, 3, 2>>::type, Vector<1, 2>>);
+static_assert(std::
+                is_same_v<RemoveFirst<2, Vector<1, 3, 2>>::type, Vector<1, 3>>);
+static_assert(std::is_same_v<RemoveFirst<2, Vector<>>::type, Vector<>>);
 
 /**
  * 8. Define RemoveAll, that removes all occurences of element R from vector V.
  */
 
-// Your code goes here:
-// ^ Your code goes here
+template<int I, typename V>
+struct RemoveAll
+{
+};
 
-// static_assert(std::is_same_v<RemoveAll<9, Vector<1,9,2,9,3,9>>::type,
-// Vector<1,2,3>>);
+template<int ToRemove, int... Rest>
+struct RemoveAll<ToRemove, Vector<ToRemove, Rest...>>
+{
+  using type = RemoveAll<ToRemove, Vector<Rest...>>::type;
+};
+
+template<int ToRemove, int First, int... Rest>
+struct RemoveAll<ToRemove, Vector<First, Rest...>>
+{
+  using type =
+    Prepend<First, typename RemoveAll<ToRemove, Vector<Rest...>>::type>::type;
+};
+
+template<int ToRemove, int... Rest>
+struct RemoveAll<ToRemove, Vector<Rest...>>
+{
+  using type = Vector<Rest...>;
+};
+
+// NOLINTBEGIN
+static_assert(std::is_same_v<
+              RemoveAll<9, Vector<1, 9, 2, 9, 3, 9>>::type,
+              Vector<1, 2, 3>>);
+// NOLINTEND
 
 /**
  * 9. Define Length.
