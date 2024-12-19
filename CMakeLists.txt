@@ -15,5 +15,6 @@ add_compile_options(-Wextra -Wall -Wpedantic -std=c++20)
 
 # Linking all to test driver
 add_executable(program main.cpp)
+add_executable(solutions-program Solutions/typelevel_set1.cpp)
 
 # vim: shiftwidth=2:

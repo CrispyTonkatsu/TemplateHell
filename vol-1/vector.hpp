@@ -1,3 +1,5 @@
+#include <iostream>
+#include <ostream>
 #include <type_traits>
 
 /**
@@ -5,7 +7,7 @@
  * Hint: Use non-type template parameter pack.
  */
 
-template<int... data>
+template<int...>
 class Vector
 {
 };
@@ -20,8 +22,30 @@ static_assert(!std::is_same_v<Vector<1, 3>, Vector<1, 2>>);
  * See main() below.
  */
 
-// Your code goes here:
-// ^ Your code goes here
+template<typename T>
+auto print_item(T to_print) -> void
+{
+  std::cout << to_print << std::endl;
+}
+
+template<typename T, typename... R>
+auto print_item(T to_print, R... remaining) -> void
+{
+  std::cout << to_print << ", ";
+  print_item(remaining...);
+}
+
+template<int I, int... R>
+auto print(Vector<I, R...>) -> void
+{
+  print_item(I, R...);
+}
+
+template<int... R>
+auto print(Vector<>) -> void
+{
+  std::cout << std::endl;
+}
 
 /**
  * 3. Define Prepend.
@@ -29,10 +53,19 @@ static_assert(!std::is_same_v<Vector<1, 3>, Vector<1, 2>>);
  * template parameters.
  */
 
-// Your code goes here:
-// ^ Your code goes here
+// TODO: Left off here
+template<int P, typename V>
+struct Prepend
+{
+};
 
-// static_assert(std::is_same_v<Prepend<1, Vector<2,3>>::type, Vector<1,2,3>>);
+template<int P, int... I>
+struct Prepend<P, Vector<I...>>
+{
+  using type = Vector<P, I...>;
+};
+
+static_assert(std::is_same_v<Prepend<1, Vector<2, 3>>::type, Vector<1, 2, 3>>);
 
 /**
  * 4. Define PrependT that can be used without ::type.
@@ -41,10 +74,10 @@ static_assert(!std::is_same_v<Vector<1, 3>, Vector<1, 2>>);
  * This technique is not used further to reduce boilerplate.
  */
 
-// Your code goes here:
-// ^ Your code goes here
+template<int P, int... I>
+using PrependT = Prepend<>;
 
-// static_assert(std::is_same_v<PrependT<1, Vector<2,3>>, Vector<1,2,3>>);
+  static_assert(std::is_same_v<PrependT<1, Vector<2, 3>>, Vector<1, 2, 3>>);
 
 /**
  * 5. Define Append.

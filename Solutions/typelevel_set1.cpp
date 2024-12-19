@@ -43,8 +43,9 @@ struct Vector
 {};
 // ^ Your code goes here
 
-static_assert(std::is_same_v<Vector<1,2>, Vector<1,2>>);
-
+static_assert(std::is_same_v<Vector<1, 2>, Vector<1, 2>>);
+static_assert(!std::is_same_v<Vector<>, Vector<1, 2>>);
+static_assert(!std::is_same_v<Vector<1, 3>, Vector<1, 2>>);
 
 /**
  * 2. Define function print() that prints Vector-s.
