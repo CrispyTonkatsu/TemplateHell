@@ -288,8 +288,8 @@ struct SortImpl<Vector<P...>, Vector<H, R...>>
   using type = SortImpl<typename Append<min, Vector<P...>>::type, rest>::type;
 };
 
-template<int... P, int... R>
-struct SortImpl<Vector<P...>, Vector<R...>>
+template<int... P>
+struct SortImpl<Vector<P...>, Vector<>>
 {
   using type = Vector<P...>;
 };
@@ -359,14 +359,38 @@ static_assert(
  * Provide an improved error message when accessing outside of Vector bounds.
  */
 
-// Your code goes here:
-// ^ Your code goes here
+template<int I, typename V>
+struct Get;
 
-// static_assert(Get<0, Vector<0,1,2>>::value == 0);
-// static_assert(Get<1, Vector<0,1,2>>::value == 1);
-// static_assert(Get<2, Vector<0,1,2>>::value == 2);
-// static_assert(Get<9, Vector<0,1,2>>::value == 2); // How good is your error
-// message?
+template<int A, int... V>
+struct Get<0, Vector<A, V...>>
+{
+  static constexpr int value = A;
+};
+
+template<int I, int A, int... V>
+struct Get<I, Vector<A, V...>>
+{
+  static_assert(I > 0, "Out of bounds, negative index");
+  static constexpr int value = Get<I - 1, Vector<V...>>::value;
+};
+
+template<int I, int... V>
+struct Get<I, Vector<V...>>
+{
+  static_assert(false, "Out of bounds, index beyond vector's end");
+};
+
+static_assert(Get<0, Vector<0, 1, 2>>::value == 0);
+static_assert(Get<1, Vector<0, 1, 2>>::value == 1);
+static_assert(Get<2, Vector<0, 1, 2>>::value == 2);
+
+// static_assert(
+//   Get<9, Vector<0, 1, 2>>::value == 2
+// ); // How good is your error message?
+// static_assert(
+//   Get<-1, Vector<0, 1, 2>>::value == 2
+// ); // How good is your error message?
 
 /**
  * 17. Define BisectLeft for Vector.
@@ -378,14 +402,21 @@ static_assert(
  * Hint: You might find it convenient to define a constexpr helper function.
  */
 
-// Your code goes here:
-// ^ Your code goes here
+template<int I, typename V>
+struct BisectLeft;
 
-// static_assert(BisectLeft<  3, Vector<0,1,2,3,4>>::value == 3);
-// static_assert(BisectLeft<  3, Vector<0,1,2,4,5>>::value == 3);
-// static_assert(BisectLeft<  9, Vector<0,1,2,4,5>>::value == 5);
-// static_assert(BisectLeft< -1, Vector<0,1,2,4,5>>::value == 0);
-// static_assert(BisectLeft<  2, Vector<0,2,2,2,2,2>>::value == 1);
+template<int I, int... V>
+struct BisectLeft<I, Vector<V...>>
+{
+  // TODO: Left off here: implementing the last 2 methods of volume 1
+  static constexpr int value = ;
+};
+
+static_assert(BisectLeft<3, Vector<0, 1, 2, 3, 4>>::value == 3);
+static_assert(BisectLeft<3, Vector<0, 1, 2, 4, 5>>::value == 3);
+static_assert(BisectLeft<9, Vector<0, 1, 2, 4, 5>>::value == 5);
+static_assert(BisectLeft<-1, Vector<0, 1, 2, 4, 5>>::value == 0);
+static_assert(BisectLeft<2, Vector<0, 2, 2, 2, 2, 2>>::value == 1);
 
 /**
  * 18. Define Insert for Vector, it should take position, value and vector.
