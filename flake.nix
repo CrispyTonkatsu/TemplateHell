@@ -5,34 +5,34 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   };
 
-  outputs = { self, nixpkgs }:
-    let
-      supportedSystems = [ "x86_64-linux" "aarch64-linux" ];
-      forEachSupportedSystem = f: nixpkgs.lib.genAttrs supportedSystems (system: f {
-        pkgs = import nixpkgs {
-          inherit system;
-        };
-      });
-    in
+  outputs =
     {
-      devShells = forEachSupportedSystem ({ pkgs }: {
-        default = pkgs.mkShell.override
-          { }
-          {
-            name = "template-hell";
-            shellHook = ''
-              export LD_LIBRARY_PATH=${pkgs.libxkbcommon}/lib:$LD_LIBRARY_PATH
-            '';
-
-            packages = with pkgs; [
-              ninja
-              cmake
-              extra-cmake-modules
-              cmakeCurses
-              clang-tools
-              clang
-            ];
-          };
-      });
-    };
+      self,
+      nixpkgs,
+      flake-utils,
+    }:
+    flake-utils.lib.eachDefaultSystem (
+      system:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in
+      {
+        devShells = {
+          default =
+            pkgs.mkShell.override
+              {
+                stdenv = pkgs.clang18Stdenv;
+              }
+              {
+                packages = with pkgs; [
+                  ninja
+                  cmake
+                  extra-cmake-modules
+                  cmakeCurses
+                  clang-tools
+                ];
+              };
+        };
+      }
+    );
 }
